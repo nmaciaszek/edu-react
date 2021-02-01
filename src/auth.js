@@ -1,22 +1,28 @@
 class Auth {
-  constructor() {
-    this.authenticated = false;
-    this.token = null;
-  }
+    constructor() {
+        this.authenticated = false;
+        this.username = 'admin';
+        this.password = '1234';
+        this.token = null;
+    }
 
-  login(callback) {
-    this.authenticated = true;
-    callback();
-  }
+    login(username, password, cb) {
+        if (username === this.username && password === this.password) {
+            this.authenticated = true;
+            cb();
+        }
 
-  logout(callback) {
-    this.authenticated = false;
-    callback();
-  }
+        return this.authenticated;
+    }
 
-  isAuthenticated() {
-    return this.authenticated;
-  }
+    logout(cb) {
+        this.authenticated = false;
+        cb();
+    }
+
+    isAuthenticated() {
+        return this.authenticated;
+    }
 }
 
 export default new Auth();

@@ -1,19 +1,18 @@
-import React from "react";
-import auth from "./../auth";
+import React from 'react';
+import { LoginForm } from './../components/LoginForm/LoginForm';
+import auth from './../auth';
 
 export const LandingPage = (props) => {
-  return (
-    <div>
-      LandingPage
-      <button
-        onClick={() => {
-          auth.login(() => {
-            props.history.push("/app");
-          });
-        }}
-      >
-        Login
-      </button>
-    </div>
-  );
+    const LoginHandler = (login, password) => {
+        auth.login(login, password, () => {
+            props.history.push('/app');
+        });
+    };
+
+    return (
+        <div>
+            <h1>Simple Web App</h1>
+            <LoginForm login={LoginHandler} />
+        </div>
+    );
 };
