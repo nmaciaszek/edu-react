@@ -1,2 +1,2 @@
-# edu-react
+# react-edu
 Created with CodeSandbox
